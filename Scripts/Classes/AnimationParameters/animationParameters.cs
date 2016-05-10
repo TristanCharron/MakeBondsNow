@@ -5,11 +5,11 @@ public class animationParameters : MonoBehaviour {
     public string animationName;
     public Vector3 translation;
     public Quaternion rotation;
-    public float scaling;
     public Transform destinationTransform;
-	public float length;
-    public float delay;
-	public int nbRepeats;
+    public float length, delay, scaling, alphaBegin, alphaEnd;
+    public bool inAndOut;
+    public int nbRepeats;
+
     [HideInInspector]
 
     public enum easeType{easeInQuad,easeOutQuad,easeInOutQuad,
@@ -18,7 +18,9 @@ public class animationParameters : MonoBehaviour {
 	easeOutSine,easeInOutSine,easeInExpo,easeOutExpo,easeInOutExpo,easeInCirc,easeOutCirc,
 	easeInOutCirc,linear,spring,easeInBack,
 	easeOutBack,easeInOutBack};
-	public easeType easeTypes;
+
+    public easeType easeTypes;
+
     public enum afterAnimation
     {
         hideIt = 1,
@@ -27,43 +29,22 @@ public class animationParameters : MonoBehaviour {
         none = 4,
     }
     public afterAnimation AfterAnimation;
-
-    public float alphaBegin;
-	public float alphaEnd;
-    public bool inAndOut;
-  
-
-
-
-	//public animationParameters[] animationList;
 	public AudioClip sound;
 	public ParticleSystem particles;
 
 
 	void Awake(){
-		set();
-       
-}
 
-	void Start(){
-
-
-
-	
-	}
-
-
-	public void set()
-	{
-        if(!inAndOut)
+        if (!inAndOut)
             nbRepeats = 1;
 
         if (nbRepeats < 1)
-			nbRepeats = 1;
-		
-		if (scaling == 0)
-			scaling = 1;
+            nbRepeats = 1;
 
-	}
+        if (scaling == 0)
+            scaling = 1;
+
+    }
+
 
 }
